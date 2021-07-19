@@ -2,7 +2,7 @@
 #MenuMaskKey, vkFF
 
 ;; TODO Better way to detect just Win key without a combination of other keys
-;;Win = PowerToys Run
+;;Win = PowerToys Run (imitates launch bar on PopOS!)
 ;;LWin::
 ;;    KeyWait, LWin
 ;;    Send, {Blind}{LWin Down}{Space Down}{LWin Up}{Space Up}
@@ -10,7 +10,8 @@
 
 ;; Ctrl + Alt + L = Close League Of Legends Client
 ;; Stupid rito, do not waste my time
-*^!L::Run, taskkill /f /im "League of Legends.exe"
+*^!L::
+    Run, taskkill /f /im "League of Legends.exe"
     return
 
 ;; Win + Q = Close current window
@@ -26,4 +27,15 @@
         WinMaximize, A
     Else
         WinRestore, A
+    return
+
+;; Alternative shortcut, not present in PopOS!
+;; Win + N = Toggle Minimize
+*#n::
+    WinMinimize, A
+    return
+
+;; Win + T = Open terminal
+*#t::
+    Run, "D:\Users\Sledmine\Documents\Cmder\Cmder Launcher.lnk"
     return
