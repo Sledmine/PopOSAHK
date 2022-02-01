@@ -37,5 +37,5 @@
 
 ;; Win + T = Open terminal
 *#t::
-    Run, "D:\Users\Sledmine\Documents\Cmder\Cmder Launcher.lnk"
+    Run, cmder
     return
