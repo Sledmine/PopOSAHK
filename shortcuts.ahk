@@ -29,13 +29,25 @@
         WinRestore, A
     return
 
-;; Alternative shortcut, not present in PopOS!
+;; Win + T = Open terminal
+*#t::
+    Run, cmder
+    return
+
+;; Alternative shortcuts, not present in PopOS by default!
 ;; Win + N = Toggle Minimize
 *#n::
     WinMinimize, A
     return
 
-;; Win + T = Open terminal
-*#t::
-    Run, cmder
+;; Win + H = Hide desktop icons
+*#h::
+    ControlGet, HWND, Hwnd,, SysListView321, ahk_class Progman
+    If HWND =
+        ControlGet, HWND, Hwnd,, SysListView321, ahk_class WorkerW
+    If DllCall("IsWindowVisible", UInt, HWND)
+        WinHide, ahk_id %HWND%
+    Else
+        WinShow, ahk_id %HWND%
     return
+
